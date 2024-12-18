@@ -1,0 +1,4 @@
+GearId:4321>>appName:Lookup Service
+sourcenetwork:>>sawsaccount:>>ssaasVendor:>>sourcenetworksegment:>>sourcelocation:>>sourceAsset:>>srcassetDesc:>>routing:>>protocol:>>IsCross:>>intranEnc:>>authN:>>authZ:>>creStorage:>>prodepro:>>accCert:>>destinationnetwork:>>dawsaccount:>>dsaasVendor:>>destinationnetworksegment:>>destinationlocation:>>destinationAsset:>>distassetDesc:>>comments:            Use this area to comment about the interface.
+            
+sourcenetwork:>>sawsaccount:>>ssaasVendor:>>sourcenetworksegment:>>sourcelocation:>>sourceAsset:>>srcassetDesc:>>routing:>>protocol:>>IsCross:>>intranEnc:>>authN:>>authZ:>>creStorage:>>prodepro:>>accCert:>>destinationnetwork:>>dawsaccount:>>dsaasVendor:>>destinationnetworksegment:>>destinationlocation:>>destinationAsset:>>distassetDesc:>>comments:Use this area to comment about the interface.
