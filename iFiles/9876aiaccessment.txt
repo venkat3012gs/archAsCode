@@ -20,3 +20,30 @@
 * **Lack of information on logging and monitoring:**  The description provides no information about logging and monitoring capabilities.  Without proper logging and real-time monitoring, security incidents might go undetected for extended periods.
 
 In summary, the security gaps stem from a lack of detail and reliance on potentially weak or insufficiently documented security controls.  A proper security assessment requires a much more granular understanding of the specific technologies, configurations, and processes involved.
+===========
+
+===========sourcenetwork:OnPrem>>sawsaccount:Data Center>>sourcenetworksegment:Internal>>sourcelocation:Internal>>sourceAsset:localclient>>srcassetDesc:User Desktop>>routing:VPN>>protocol:FTPS>>IsCross:No>>intranEnc:Yes>>authN:apikey>>authZ:appmged>>creStorage:vault>>prodepro:Manual>>accCert:Email-Manual>>destinationnetwork:SaaS>>dawsaccount:Workday>>destinationnetworksegment:Dedicated>>destinationlocation:Data>>destinationAsset:ftpserver>>distassetDesc:Recieves files>>comments:Use this area to comment about the interface.
+===========
+
+===========Based on the provided interface details, several security gaps exist:
+
+* **VPN reliance:**  Relying solely on a VPN for security is insufficient. VPNs can be compromised, and offer only network-level security, not application-level security.  The specifics of the VPN (type, configuration, etc.) are not given, leaving this as a significant unknown risk.
+
+* **FTPS usage:** FTPS (FTP over SSL/TLS) offers encryption *in transit*, but doesn't inherently secure the server itself or the files after they are received.  This means vulnerabilities on the FTP server (Workday's ftpserver in this case) or weaknesses in its configuration could compromise data.  Moreover, FTPS has known vulnerabilities; the specific version used is unspecified increasing the risk.
+
+* **API Key Authentication (authN: apikey):**  API keys, while better than passwords for programmatic access, are vulnerable if compromised or improperly managed.  Rotation and strong security around these keys are crucial and must be considered.
+
+* **Application-Managed Authorization (authZ: appmged):**  Without further information about the application-managed authorization system, this is a potential risk area.  The strength of the authorization mechanism is unknown.  If it's poorly implemented or vulnerable, unauthorized access might be possible.
+
+* **Manual processes (prodepro: Manual & accCert: Email-Manual):** Manual processes for provisioning and access certifications create inconsistencies and increase the risk of human error, potentially leading to security vulnerabilities. These should be automated and integrated as much as possible.
+
+* **Data at rest security:** While the data is encrypted *in transit* (intranEnc: Yes), there's no mention of encryption *at rest* on either the source (localclient) or destination (ftpserver). The security of data stored in the vault (`creStorage: vault`) is also not defined - what kind of vault, how is it secured?
+
+* **Lack of detail on network segmentation:** The description of network segments ("Internal" and "Dedicated") is vague. Stronger, more granular network segmentation could significantly improve security.
+
+* **No mention of Data Loss Prevention (DLP):** There is no indication of measures in place to prevent sensitive data from leaving the network even with encryption.
+
+* **Unclear access control:** The description lacks specifics on access controls and permissions on both the source and destination systems, representing a broad security gap.
+
+
+In summary, while some security measures are in place (encryption in transit), the reliance on a VPN alone, the use of FTPS, manual processes, and the lack of detail regarding key security aspects create significant security gaps. A more thorough security assessment is needed to identify and mitigate these risks effectively.
