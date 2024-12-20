@@ -23,3 +23,30 @@ Based on the provided interface details, several security gaps are apparent:
 
 
 In summary, while some security measures are mentioned (SSO, intranet encryption), the lack of detail regarding internet transit encryption, authorization specifics, account management, DMZ security, and data loss prevention represents significant security gaps.  A thorough security review and implementation of more robust controls are needed.
+Interface2
+
+sourcenetwork:OnPrem>>sawsaccount:Data Center>>sourcenetworksegment:Internal>>sourcelocation:Internal>>sourceAsset:localclient>>srcassetDesc:User Desktop>>routing:VPN>>protocol:FTPS>>IsCross:No>>intranEnc:Yes>>authN:apikey>>authZ:appmged>>creStorage:vault>>prodepro:Manual>>accCert:Email-Manual>>destinationnetwork:SaaS>>dawsaccount:Workday>>destinationnetworksegment:Dedicated>>destinationlocation:Data>>destinationAsset:ftpserver>>distassetDesc:Recieves files>>comments:Use this area to comment about the interface.
+
+
+Based on the provided interface details, several security gaps exist:
+
+* **VPN reliance:**  Relying solely on a VPN for security is insufficient. VPNs can be vulnerable to attacks, and a compromised VPN would expose the entire connection.  There's no mention of additional security measures beyond the VPN.
+
+* **FTPS (FTP over SSL/TLS):** While FTPS offers some encryption, it's not inherently secure.  It's vulnerable to various attacks if not properly implemented and configured.  The strength of the encryption used (TLS version, cipher suites) is unknown and crucial.  Consider the use of SFTP (SSH File Transfer Protocol) which provides stronger security features.
+
+* **API Key Authentication (`authN:apikey`):** API keys, while convenient, present a significant security risk if not managed properly.  Compromise of an API key grants complete access.  Strong key rotation practices, short lifespans, and appropriate access controls are crucial but not mentioned.
+
+* **Application Managed Authorization (`authZ:appmged`):** This is vague and raises concerns.  Without knowing the specifics of the application-managed authorization, it's impossible to evaluate its security.  There's a lack of detail on access control mechanisms and least privilege principles.
+
+* **Manual Process for Access Certification (`accCert:Email-Manual`):** Manual processes are error-prone and inefficient, increasing the risk of unauthorized access.  Automation and stricter controls are needed.  Email is an inherently insecure channel for sensitive information like certificates.
+
+* **Data at Rest Protection (vault):** While `creStorage:vault` mentions data storage in a vault, the details of the vault's security are unknown. The type of vault (physical or virtual), encryption methods, access controls, and audit logging need further clarification to ensure its effectiveness.
+
+* **Lack of detailed logging and monitoring:** There's no mention of detailed logging and monitoring capabilities to detect and respond to security incidents.  This is crucial for maintaining visibility into the system.
+
+* **Unclear network segmentation:**  While network segmentation is mentioned, the specifics are lacking. Strong network segmentation is crucial, but effectiveness depends on proper implementation and enforcement.
+
+* **"Manual" Production Deployment (`prodepro:Manual`):** Manual deployments increase the chance of human error and misconfiguration, leading to vulnerabilities.  Automated deployments with rigorous testing are recommended.
+
+
+In summary, the security posture relies heavily on a VPN and a few unspecified security measures.  Several gaps exist that need addressing, including stronger authentication, authorization, secure file transfer protocols (SFTP is preferred over FTPS), rigorous key management, automated processes, robust logging and monitoring, and detailed analysis of network segmentation and vault security.
